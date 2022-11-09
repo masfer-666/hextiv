@@ -6,13 +6,7 @@ Docker clean Laravel 8 installation with PostgreSQL, Redis and nginx
 
 1. Setup .env  
 2. `docker-compose up -d --build`
-2. `docker-compose run --rm composer install`        
-3. `docker-compose run --rm key:generate`  
-3. `docker-compose run --rm artisan migrate`  
-
-
------
-
-- [Docker guide](./guide/docker.md)
-
------
+3. `docker-compose run --rm composer install`        
+4. `docker-compose run --rm artisan key:generate`  
+5. `docker-compose run --rm artisan migrate`  
+6. `docker-compose run --rm artisan migrate`  

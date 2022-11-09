@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  laravel:
+  hextiv:
 
 services:
   redis:
@@ -13,12 +13,12 @@ services:
       - "./postgres/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=B1smillah
+      - POSTGRES_DB=hextiv
     ports:
       - "5432:5432"
     networks:
-      - laravel
+      - hextiv
 
   nginx:
     image: nginx:stable-alpine
@@ -31,7 +31,7 @@ services:
       - php
       - postgres
     networks:
-      - laravel
+      - hextiv
 
   php:
     build:
@@ -42,7 +42,7 @@ services:
     ports:
       - "9000:9000"
     networks:
-      - laravel
+      - hextiv
 
   composer:
     image: composer:1.10.16
@@ -52,7 +52,7 @@ services:
     depends_on:
       - php
     networks:
-      - laravel
+      - hextiv
 
   npm:
     image: node:lts
@@ -72,7 +72,7 @@ services:
     working_dir: /var/www/html
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
-      - laravel
+      - hextiv
 
 volumes:
   postgres: {}
